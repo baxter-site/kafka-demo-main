@@ -1,5 +1,6 @@
 ## Предварительно обновил Docker до последней версии
-иначе не запуслил Kubernetes
+иначе не запускался Kubernetes
+
 далее все по шагам
 
 ## Шаг 1. Запуск Kafka и ZooKeeper через Docker Compose
