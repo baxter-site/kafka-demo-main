@@ -1,0 +1,69 @@
+
+
+PS D:\PythonProjects\kafka-demo-main>
+time="2025-03-26T12:20:07+03:00" level=warning msg="D:\\PythonProjects\\kafka-demo-main\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] Running 19/19
+ ✔ zookeeper Pulled                                                                                                                                 223.9s 
+ ✔ kafka Pulled                                                                                                                                     223.8s 
+[+] Running 3/3
+ ✔ Network kafka-demo-main_default  Created                                                                                                           0.1s 
+ ✔ Container kafka                  Started                                                                                                          10.8s 
+PS D:\PythonProjects\kafka-demo-main> docker-compose ps
+time="2025-03-26T12:24:29+03:00" level=warning msg="D:\\PythonProjects\\kafka-demo-main\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+NAME        IMAGE                              COMMAND                  SERVICE     CREATED          STATUS          PORTS
+zookeeper   confluentinc/cp-zookeeper:latest   "/etc/confluent/dock…"   zookeeper   38 seconds ago   Up 27 seconds   2888/tcp, 0.0.0.0:2181->2181/tcp, 3888/tcp
+PS D:\PythonProjects\kafka-demo-main> docker exec -it kafka kafka-topics --create --topic test-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+Created topic test-topic.
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug kafka
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS D:\PythonProjects\kafka-demo-main> docker build -t kafka-demo-app .
+[+] Building 141.9s (11/11) FINISHED                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                  0.2s
+ => => transferring dockerfile: 539B                                                                                                                  0.0s 
+ => [internal] load metadata for docker.io/library/python:3.10.2                                                                                      2.2s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                                     0.1s
+ => => transferring context: 2B                                                                                                                       0.0s 
+ => [1/5] FROM docker.io/library/python:3.10.2@sha256:3204faabc2f0b5e0939bdb8b29079a2a330c38dee92a22482a9ed449c5649a55                              129.4s
+ => => resolve docker.io/library/python:3.10.2@sha256:3204faabc2f0b5e0939bdb8b29079a2a330c38dee92a22482a9ed449c5649a55                                0.1s 
+ => => sha256:17e2d81e5757980ee40742d77dd5d3e1a69ad0d6dacb13064e1b018a6664ec72 2.22kB / 2.22kB                                                        0.0s 
+ => => sha256:178dcaa62b393b539abc8b866c39be81e8ade01786880dc5d17ce3fe02426dbb 8.55kB / 8.55kB                                                        0.0s
+ => => sha256:3204faabc2f0b5e0939bdb8b29079a2a330c38dee92a22482a9ed449c5649a55 2.14kB / 2.14kB                                                        0.0s 
+ => => sha256:e4d61adff2077d048c6372d73c41b0bd68f525ad41f5530af05098a876683055 54.92MB / 54.92MB                                                     23.0s 
+ => => sha256:4ff1945c672b08a1791df62afaaf8aff14d3047155365f9c3646902937f7ffe6 5.15MB / 5.15MB                                                        2.8s 
+ => => sha256:ff5b10aec998344606441aec43a335ab6326f32aae331aab27da16a6bb4ec2be 10.87MB / 10.87MB                                                      4.9s 
+ => => sha256:12de8c754e45686ace9e25d11bee372b070eed5b5ab20aa3b4fab8c936496d02 54.58MB / 54.58MB                                                     42.1s 
+ => => sha256:ada1762e76024dd216336649249fc2470257acc5af277bae3c71710382df345f 196.52MB / 196.52MB                                                   68.0s 
+ => => sha256:2f2b2e030155d32fbf69b4feeced1877ce0e3f21b5f27b98eb080c3ef01a70df 6.29MB / 6.29MB                                                       26.2s 
+ => => extracting sha256:e4d61adff2077d048c6372d73c41b0bd68f525ad41f5530af05098a876683055                                                            38.8s 
+ => => sha256:fa63e4e5310b6c6e8fc69825073a49a506de7e0dd1628b292cd59cf050744ef9 19.20MB / 19.20MB                                                     33.0s 
+ => => sha256:7c5288a5b77966ccab65aaa8529a1985574b516b5ff97c4c447fceb342c4933e 238B / 238B                                                           33.7s 
+ => => sha256:38121472aa0128f87b31fde5c07080418cc17b4a8ee224767b59e24c592ff7d3 2.34MB / 2.34MB                                                       35.9s 
+ => => extracting sha256:4ff1945c672b08a1791df62afaaf8aff14d3047155365f9c3646902937f7ffe6                                                             2.8s 
+ => => extracting sha256:ff5b10aec998344606441aec43a335ab6326f32aae331aab27da16a6bb4ec2be                                                             2.9s 
+ => => extracting sha256:12de8c754e45686ace9e25d11bee372b070eed5b5ab20aa3b4fab8c936496d02                                                            18.1s 
+ => => extracting sha256:ada1762e76024dd216336649249fc2470257acc5af277bae3c71710382df345f                                                            34.9s 
+ => => extracting sha256:2f2b2e030155d32fbf69b4feeced1877ce0e3f21b5f27b98eb080c3ef01a70df                                                             2.8s 
+ => => extracting sha256:fa63e4e5310b6c6e8fc69825073a49a506de7e0dd1628b292cd59cf050744ef9                                                             1.8s 
+ => => extracting sha256:7c5288a5b77966ccab65aaa8529a1985574b516b5ff97c4c447fceb342c4933e                                                             0.0s 
+ => => extracting sha256:38121472aa0128f87b31fde5c07080418cc17b4a8ee224767b59e24c592ff7d3                                                             0.5s 
+ => [internal] load build context                                                                                                                     0.2s 
+ => => transferring context: 13.22kB                                                                                                                  0.1s 
+ => [2/5] WORKDIR /app                                                                                                                                2.8s 
+ => [3/5] COPY requirements.txt .                                                                                                                     0.2s 
+ => [4/5] RUN pip install --no-cache-dir -r requirements.txt                                                                                          6.1s 
+ => exporting to image                                                                                                                                0.4s 
+ => => exporting layers                                                                                                                               0.3s 
+ => => writing image sha256:7539ea8f806ee5e6350ae0706ed510e2611f08ec7218bc88b51be35178cdaa8c                                                          0.0s 
+ => => naming to docker.io/library/kafka-demo-app                                                                                                     0.0s 
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/a78vdt98uej26z6jj6i3cnn3o
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview
+PS D:\PythonProjects\kafka-demo-main> docker run --rm --network host kafka-demo-app
+Сообщение отправлено: b'Hello, Kafka!'
+Получено сообщение: b'Hello, Kafka!'
+PS D:\PythonProjects\kafka-demo-main>
